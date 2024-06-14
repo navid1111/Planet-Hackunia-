@@ -1,0 +1,137 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  margin: 0;
+  padding-top: 60px; // To accommodate fixed nav-bar
+}
+
+.home-page {
+  .hero-section {
+    position: relative;
+    height: 80vh; // Adjusted height to be larger
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // Ensure the image covers the entire hero section without being blurred
+      z-index: -1; // Place the image behind the overlay
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // Dark overlay
+    }
+
+    .hero-content {
+      max-width: 600px;
+      animation: fadeIn 2s;
+      z-index: 1;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .cta-button {
+        background-color: #e60c0cd7;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.3s;
+
+        &:hover {
+          background-color: #e60c0cd7;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  .features-section {
+    padding: 80px 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #333;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+
+      .feature {
+        background: linear-gradient(135deg, #fdf9f9, #b6b0af);
+        color: #e60c0cd7;
+        border-radius: 10px;
+        padding: 30px;
+        max-width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+
+        p {
+          color: #333;
+        }
+
+        &:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+          font-size: 2rem;
+          margin-bottom: 15px;
+        }
+
+        h3 {
+          font-size: 1.8rem;
+          margin-bottom: 15px;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
