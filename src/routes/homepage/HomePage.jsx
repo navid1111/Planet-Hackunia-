@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 import NavBar from '../../components/navbar/Navbar';
+import { newsData } from '../../lib/dummydata';
+import Map from '../../map/Map';
 import './homePage.scss';
 
 const HomePage = () => {
+  const data = newsData.articles;
+
   const [features, setFeatures] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,6 +36,28 @@ const HomePage = () => {
     }, 2000);
   }, []);
 
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3, // Number of slides to show at once
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="home-page">
       <NavBar />
@@ -50,6 +79,32 @@ const HomePage = () => {
           </div>
         </div>
       </header>
+      <div className="mapContainer">
+        <div className="map">
+          <Map items={data} />
+        </div>
+      </div>
+
+      <section className="news-section">
+        <h2>Latest News</h2>
+        <Slider {...sliderSettings}>
+          {data.map(article => (
+            <div key={article.id} className="news-card">
+              <img
+                src={article.imageUrl}
+                alt={article.title}
+                className="news-image"
+              />
+              <div className="news-content">
+                <h3 className="news-title">{article.title}</h3>
+                <p className="news-author">By {article.author}</p>
+                <p className="news-description">{article.content}</p>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </section>
+
       <section className="features-section" id="features">
         <h2>Our Features</h2>
         {loading ? (

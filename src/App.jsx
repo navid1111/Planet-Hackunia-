@@ -15,7 +15,7 @@ const App = () => {
     },
     {
       path: '/news',
-      element: ListPage,
+      element: <ListPage />,
     },
     {
       path: '/logIn',
